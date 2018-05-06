@@ -6,6 +6,7 @@ jobs:
     - stage: build docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - sudo gem update --system 2.5.1
       - sudo ruby image/build.rb
       - docker build -f ./image/base/Dockerfile -t discourse-test-image .
       - docker images
