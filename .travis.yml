@@ -1,5 +1,13 @@
-language: ruby
-rvm:
- - 2.3.4
- - rbx-3
+sudo: true
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -f images/base/Dockerfile -t discourse-test-image .
+      - docker images
+      - docker tag discourse-test-image $DOCKER_USERNAME/discourse-test-image
+      - docker push $DOCKER_USERNAME/discourse-test-image
 
