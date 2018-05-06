@@ -6,7 +6,7 @@ jobs:
     - stage: build docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -f images/base/Dockerfile -t discourse-test-image .
+      - docker build -f ./images/base/Dockerfile -t discourse-test-image .
       - docker images
       - docker tag discourse-test-image $DOCKER_USERNAME/discourse-test-image
       - docker push $DOCKER_USERNAME/discourse-test-image
