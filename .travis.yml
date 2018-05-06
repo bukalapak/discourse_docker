@@ -6,6 +6,8 @@ jobs:
     - stage: build docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - apt-get install ruby
+      - ruby image/auto-build.rb
       - docker build -f ./image/base/Dockerfile -t discourse-test-image .
       - docker images
       - docker tag discourse-test-image $DOCKER_USERNAME/discourse-test-image
