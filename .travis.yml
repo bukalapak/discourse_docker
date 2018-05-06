@@ -1,15 +1,12 @@
 sudo: true
 dist: trusty
 
+rvm:
+  - 2.5.1
+
 jobs:
   include:
     - stage: build docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - sudo env REALLY_GEM_UPDATE_SYSTEM=1 gem update --system 2.5.1
       - sudo ruby image/build.rb
-      - docker build -f ./image/base/Dockerfile -t discourse-test-image .
-      - docker images
-      - docker tag discourse-test-image $DOCKER_USERNAME/discourse-test-image
-      - docker push $DOCKER_USERNAME/discourse-test-image
-
