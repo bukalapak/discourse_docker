@@ -2,11 +2,11 @@ sudo: true
 dist: trusty
 
 rvm:
-  - 2.5.1
+  - 2.3.4
 
 jobs:
   include:
     - stage: build docker image
       script:
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - sudo ruby image/build.rb
+      - cd image && sudo ruby build.rb
