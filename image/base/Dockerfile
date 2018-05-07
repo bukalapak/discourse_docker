@@ -1,6 +1,6 @@
 # NAME:     discourse/base
 # VERSION:  release
-FROM christoperhanstech/discourse-base
+FROM christoperhanstech/discourse-base:1.4.0
 
 ENV PG_MAJOR 10
 ENV RUBY_ALLOCATOR /usr/lib/libjemalloc.so.1
