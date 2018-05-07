@@ -83,7 +83,8 @@ end
 ensure_docker_squash
 
 images = {
-  base: { name: 'base', tag: "discourse/base:#{version}", squash: false }
+  builder: { name: 'builder', tag: "christoperhanstech/discourse-builder:#{version}", squash: false }
+  base: { name: 'base', tag: "christoperhanstech/discourse-base:#{version}", squash: false }
   #discourse: { name: 'discourse', tag: "discourse/discourse:#{version}", squash: true, layers_to_keep: 1 },
   #discourse_test: { name: 'discourse_test', tag: "discourse/discourse_test:#{version}", squash: true, layers_to_keep: 2 },
   #discourse_dev: { name: 'discourse_dev', tag: "discourse/discourse_dev:#{version}", squash: false },
