@@ -16,7 +16,7 @@ def run(command)
     end
   end
 
-  lines
+  puts lines
 end
 
 def ensure_docker_squash
