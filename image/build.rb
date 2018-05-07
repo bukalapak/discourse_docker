@@ -28,9 +28,9 @@ end
 
 def build(image)
   lines = run("cd #{image[:name]} && docker build . || true")
+  puts lines
+  img = lines[-1]["successfully built ".length..-1].strip
 =begin
-     img = lines[-1]["successfully built ".length..-1].strip
-
   if image[:squash]
 
     if image[:layers_to_keep] == nil
