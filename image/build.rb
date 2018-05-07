@@ -28,8 +28,6 @@ end
 
 def build(image)
   lines = run("cd #{image[:name]} && docker build . || true")
-  puts "run successfully"
-  puts lines
   img = lines[-1]["successfully built ".length..-1].strip
 
   if image[:squash]
