@@ -98,3 +98,5 @@ todo.each do |image|
 
   dev_deps() if image == :discourse_dev
 
+  build(images[image])
+end
