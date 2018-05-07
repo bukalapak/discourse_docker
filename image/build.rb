@@ -28,7 +28,8 @@ end
 
 def build(image)
   lines = run("cd #{image[:name]} && docker build . || true")
-  img = lines[-1]["successfully built ".length..-1].strip
+=begin
+     img = lines[-1]["successfully built ".length..-1].strip
 
   if image[:squash]
 
@@ -44,6 +45,8 @@ def build(image)
   else
     run("docker tag #{img} #{image[:tag]}")
   end
+=end
+  run("docker tag #{img} #{image[:tag]}")
 end
 
 def bump(image, image_version)
